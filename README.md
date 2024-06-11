@@ -249,8 +249,8 @@ docker-compose up --build
 5. Testing the Services:
 OrderService: Use Thunder Client for  API client to place an order.
 
-Endpoint: http://localhost:8080/place-order
-Method: POST
+Endpoint:http://localhost:8081/check
+Method: GET
 
 ```{
   "productname":"speakers",
