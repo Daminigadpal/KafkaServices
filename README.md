@@ -72,7 +72,8 @@ Ensure you have the following installed on your machine:
 
 - Node.js (for local development and testing)
 
-
+- MongoDB (for local development and testing)
+  
 ## Tech Stack
 
 OrderService/InventoryService
@@ -102,7 +103,8 @@ Ensure you have the following installed on your machine:
 - Docker Compose
 
 - Node.js (for local development and testing)
-- Confluent Kafka (for local development and testing)
+
+- MongoDB (for local development and testing)
 ```
 Docker Configuration
 
