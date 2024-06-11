@@ -190,19 +190,7 @@ services:
        - 27017:27017
       volumes:
        - ./data/mongo:/data/db
-  <!-- postgres:
-      container_name: postgres_16
-      image: postgres:16
-      ports:
-        - 5433:5433
-      volumes:
-        - ./data/postgres:/var/lib/postgresql/data
-      environment:
-        - POSTGRES_USER = postgres
-        - POSTGRES_PASSWORD = postgres
-        - POSTGRES_DB = postgres
-        - POSTGRES_HOST=localhost
-        - POSTGRES_PORT=5433 -->
+  
         
   orderservices-app1:
        container_name: orderservices-app1
