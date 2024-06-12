@@ -104,6 +104,7 @@ Ensure you have the following installed on your machine:
 - Docker Compose
 
 - Node.js (for local development and testing)
+
 - Mongodb (for local development and testing)
 ```
 Docker Configuration
