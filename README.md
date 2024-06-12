@@ -1,5 +1,5 @@
 <h1 align="center"> 
-EVENT SERVICES
+Event SERVICES
 </h1>
 <p align="center">Express.js application to create Event Services [ Event Driven Microservices Architecture ] .</p>
 
@@ -72,8 +72,7 @@ Ensure you have the following installed on your machine:
 
 - Node.js (for local development and testing)
 
-- MongoDB (for local development and testing)
-  
+
 ## Tech Stack
 
 OrderService/InventoryService
@@ -103,8 +102,7 @@ Ensure you have the following installed on your machine:
 - Docker Compose
 
 - Node.js (for local development and testing)
-
-- MongoDB (for local development and testing)
+- Mongodb (for local development and testing)
 ```
 Docker Configuration
 
@@ -157,7 +155,6 @@ COPY . .
 CMD ["npm", "start"]
 ```
 
-
     
 3. Docker Compose Configuration:
 ```
@@ -168,8 +165,7 @@ services:
     image: wurstmeister/zookeeper:latest
     ports:
       - 2181:2181
-    # networks:
-    #   - my_network
+   
   kafka:
     container_name: kafka
     image: wurstmeister/kafka:latest
@@ -182,9 +178,7 @@ services:
       - KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181
       - KAFKA_ADVERTISED_LISTENERS= PLAINTEXT://kafka:9092
       - KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR= 1
-    # networks:
-    #   - my_network
-
+    
   mongo:
       container_name: mongo
       image: mongo
@@ -193,7 +187,6 @@ services:
       volumes:
        - ./data/mongo:/data/db
   
-        
   orderservices-app1:
        container_name: orderservices-app1
        image : node:18
@@ -208,13 +201,15 @@ services:
           - 8080:8080
        environment: 
           - PORT=8080
-          - POSTGRES_URL=postgres://postgres:postgres@postgres:5433/postgres
+          - MONGO_URL=mongodb+srv://Damini:Saanv!00@cluster0.51e4ypk.mongodb.net/
           - KAFKA_BOOTSTRAP_SERVERS=kafka:9092
           - KAFKA_TOPIC=orders
        depends_on:
-           - postgres
+           - mongo
            - kafka
-    
+      #  networks:
+      #      - my_network
+
   inventoryservices-app2:
          container_name: inventoryservices-app2
          image : node:18
@@ -226,20 +221,22 @@ services:
          working_dir: /inventoryservices-app2
          command: npm start
          ports:
-          - 8082:8080
+          - 8081:8080
          environment: 
-          - PORT=8082
-          - MONGO_URL=mongodb+srv://Damini:Saanv!00@cluster0.51e4ypk.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
-          - KAFKA_BOOTSTRAP_SERVERS= kafka:9092
+          - PORT=8081
+          - MONGO_URL=mongodb+srv://Damini:Saanv!00@cluster0.51e4ypk.mongodb.net/
+          - KAFKA_BOOTSTRAP_SERVERS=kafka:9092
           - KAFKA_TOPIC=orders
          depends_on:
-           - postgres
+           - mongo
            - kafka
-<!--          
+        #  networks:
+        #    - my_network
+         
   # networks:
-  #   my-kafka-network:
-  #     driver: bridge -->
-
+  #     my-kafka-network:
+  #       driver:     
+      
 ```
     
 4.  Build and Run the Services:
@@ -249,13 +246,13 @@ docker-compose up --build
 5. Testing the Services:
 OrderService: Use Thunder Client for  API client to place an order.
 
-Endpoint:http://localhost:8081/check
-Method: GET
+Endpoint: http://localhost:8080/place-order
+Method: POST
 
-```{
-  "productname":"speakers",
-  "qty":2,
-  "price":300 
+```
+{
+ "item":"speakers",
+ "quantity":2
 }
 ```
 6.Running Unit Tests

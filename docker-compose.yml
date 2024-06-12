@@ -44,7 +44,7 @@ services:
           - 8080:8080
        environment: 
           - PORT=8080
-          - MONGO_URL=mongodb+srv://Damini:Saanv!00@cluster0.51e4ypk.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+          - MONGO_URL=mongodb+srv://Damini:Saanv!00@cluster0.51e4ypk.mongodb.net/
           - KAFKA_BOOTSTRAP_SERVERS=kafka:9092
           - KAFKA_TOPIC=orders
        depends_on:
@@ -64,11 +64,11 @@ services:
          working_dir: /inventoryservices-app2
          command: npm start
          ports:
-          - 8082:8080
+          - 8081:8080
          environment: 
-          - PORT=8082
-          - MONGO_URL=mongodb+srv://Damini:Saanv!00@cluster0.51e4ypk.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
-          - KAFKA_BOOTSTRAP_SERVERS= kafka:9092
+          - PORT=8081
+          - MONGO_URL=mongodb+srv://Damini:Saanv!00@cluster0.51e4ypk.mongodb.net/
+          - KAFKA_BOOTSTRAP_SERVERS=kafka:9092
           - KAFKA_TOPIC=orders
          depends_on:
            - mongo

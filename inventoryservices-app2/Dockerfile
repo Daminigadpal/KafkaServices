@@ -1,7 +1,7 @@
 FROM node:18
 
 # Set working directory
-WORKDIR /inventoryservices-app1
+WORKDIR /inventoryservices-app2
 
 # Copy package.json and package-lock.json
 COPY package.json package-lock.json ./
