@@ -1,24 +1,11 @@
 
 const Order = require('./orderModel');
-//const kafka = require('kafka-node');
 const axios = require('axios');
-
-// const client = new kafka.KafkaClient({ kafkaHost: process.env.KAFKA_BOOTSTRAP_SERVERS });
-// const producer = new kafka.Producer(client);
-
-// // Ensuring Kafka producer is ready before sending messages
-// producer.on('ready', () => {
-//   console.log('Kafka Producer is connected and ready.');
-// });
-
-// producer.on('error', (err) => {
-//   console.error('Error with Kafka producer:', err);
-// });
 
 // Function to send message to Kafka
 const sendMessageToKafka = (message) => {
   const payloads = [
-    { topic: process.env.TOPIC, messages: JSON.stringify(message) }
+    { topic: process.env.KAFKA_TOPIC, messages: JSON.stringify(message) }
   ];
 
   producer.send(payloads, (err, data) => {
@@ -55,3 +42,5 @@ exports.createOrder = async (req, res) => {
   }
     
 };
+
+

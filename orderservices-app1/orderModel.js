@@ -24,13 +24,17 @@ const orderSchema = new mongoose.Schema({
 const Order = mongoose.model('Order', orderSchema);
 
 
-
-
-
 // Database connection
 mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true, dbName: 'ordersDatabase' })
   .then(() => {
     console.log('Connected to MongoDB');
+
+// Ensure startProducer is a function
+if (typeof startProducer === 'function') {
+  startProducer(); // Call the function
+} else {
+  console.error('startProducer is not a function');
+}
     // Start Kafka producer after MongoDB connection is established
     startProducer();
   })
