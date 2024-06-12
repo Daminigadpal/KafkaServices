@@ -72,6 +72,8 @@ Ensure you have the following installed on your machine:
 
 - Node.js (for local development and testing)
 
+- mongoDb (for read/write data)
+
 
 ## Tech Stack
 
