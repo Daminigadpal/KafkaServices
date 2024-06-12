@@ -1,5 +1,5 @@
 <h1 align="center"> 
-Event SERVICES
+EVENT SERVICES
 </h1>
 <p align="center">Express.js application to create Event Services [ Event Driven Microservices Architecture ] .</p>
 
