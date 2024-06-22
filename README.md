@@ -1,5 +1,5 @@
 <h1 align="center"> 
-Event SERVICES
+EVENT SERVICES
 </h1>
 <p align="center">Express.js application to create Event Services [ Event Driven Microservices Architecture ] .</p>
 
@@ -72,6 +72,8 @@ Ensure you have the following installed on your machine:
 
 - Node.js (for local development and testing)
 
+- mongoDb (for read/write data)
+
 
 ## Tech Stack
 
@@ -102,6 +104,7 @@ Ensure you have the following installed on your machine:
 - Docker Compose
 
 - Node.js (for local development and testing)
+
 - Mongodb (for local development and testing)
 ```
 Docker Configuration
@@ -246,7 +249,7 @@ docker-compose up --build
 5. Testing the Services:
 OrderService: Use Thunder Client for  API client to place an order.
 
-Endpoint: http://localhost:8080/place-order
+Endpoint: http://localhost:8080/orders
 Method: POST
 
 ```
