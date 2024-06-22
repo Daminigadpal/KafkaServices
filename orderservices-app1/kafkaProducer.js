@@ -27,5 +27,18 @@ function startProducer() {
     producer.on('error', (err) => {
         console.error('Error with Kafka producer:', err);
     });
+     
+   // Function to close the producer and client
+   const closeConnections = () => {
+    return new Promise((resolve) => {
+        producer.close(() => {
+            client.close(resolve);
+        });
+    });
+};
+
+// Return producer and closeConnections function
+return { producer, closeConnections };
 }
+
 module.exports = startProducer;

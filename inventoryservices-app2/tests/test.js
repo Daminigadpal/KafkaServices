@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const { MongoMemoryServer } = require('mongodb-memory-server');
-const Inventory = require('../models/inventoryModel'); // Adjust the path to your Inventory model
+const Inventory = require('../inventoryModel'); // Adjust the path to your Inventory model
 
 let mongoServer;
 

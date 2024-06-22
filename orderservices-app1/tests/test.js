@@ -6,7 +6,7 @@ let mongoServer;
 
 beforeAll(async () => {
   mongoServer = await MongoMemoryServer.create();
-  const uri = mongoServer.getUri();
+  const uri =  mongoServer.getUri();
   await mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 });
 
@@ -43,7 +43,7 @@ describe('Order Model Test', () => {
 const kafka = require('kafka-node');
 const dotenv = require('dotenv');
 const sinon = require('sinon');
-const Inventory = require('../models/inventoryModel'); // Adjust the path to your Inventory model
+const Inventory = require('../inventoryModel'); // Adjust the path to your Inventory model
 
 dotenv.config();
 
@@ -80,7 +80,7 @@ describe('Kafka Producer and Consumer', () => {
     sinon.stub(consumer, 'on').withArgs('message').yields(mockMessage);
 
     consumer.on('message', async (message) => {
-      const order = JSON.parse(message.value);
+      const order =   JSON.parse(message.value);
       expect(order.item).toBe('item1');
       expect(order.quantity).toBe(5);
       done();
