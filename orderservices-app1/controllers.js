@@ -25,7 +25,7 @@ exports.createOrder = async (req, res) => {
     if (!item || !quantity) {
       return res.status(400).send({ message: 'Item and quantity are required.' });
     }
-
+    
     const inventoryResponse = await axios.get(`http://localhost:8081/check`, { params: { item, quantity } });
 
     if (inventoryResponse.data.success) {
