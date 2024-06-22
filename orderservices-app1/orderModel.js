@@ -38,7 +38,7 @@ if (typeof startProducer === 'function') {
     // Start Kafka producer after MongoDB connection is established
     startProducer();
   })
-  .catch(err => {
+  .catch((error)=> {
     console.error('Error connecting to MongoDB:', err);
   });
 

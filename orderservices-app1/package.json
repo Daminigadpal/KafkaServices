@@ -17,13 +17,11 @@
     "express": "^4.19.2",
     "kafka-node": "^5.0.0",
     "mongodb": "^6.7.0",
-    "mongoose": "^8.4.1"
+    "mongodb-memory-server": "^9.3.0",
+    "mongoose": "^8.4.1",
+    "sinon": "^18.0.0"
   },
   "devDependencies": {
     "jest": "^29.7.0"
-  },
-  "jest": {
-    "testMatch": ["**/__tests__/**/*.[jt]s?(x)", "**/?(*.)+(spec|test).[tj]s?(x)"],
-    "testPathIgnorePatterns": ["\\\\node_modules\\\\"]
   }
 }

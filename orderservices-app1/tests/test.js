@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const { MongoMemoryServer } = require('mongodb-memory-server');
-const Order = require('../models/orderModel'); // Adjust the path to your Order model
+const Order = require('../orderModel'); // Adjust the path to your Order model
 
 let mongoServer;
 
