@@ -29,6 +29,7 @@ services:
        - 27017:27017
       volumes:
        - ./data/mongo:/data/db
+      restart: unless-stopped
   
   orderservices-app1:
        container_name: orderservices-app1
