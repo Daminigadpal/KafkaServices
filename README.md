@@ -261,12 +261,10 @@ Method: POST
 6.Running Unit Tests
 ```
 cd orderservices-app1
-npm install
-npm test
+npm  run test
 
 cd ../inventoryservices-app2
-npm install
-npm test
+npm  run test
 ```
 
        
