@@ -19,6 +19,8 @@ app.use(express.json())
 // Log the environment variables to ensure they are read correctly
 console.log(`Kafka Bootstrap Servers: '${process.env.KAFKA_BOOTSTRAP_SERVERS}'`);
 console.log(`Topic: '${process.env.KAFKA_TOPIC}'`);
+console.log(`Group ID: '${process.env.KAFKA_GROUP_ID}'`);
+
 
 
 
@@ -29,7 +31,9 @@ if (!process.env.KAFKA_BOOTSTRAP_SERVERS) {
 if (!process.env.KAFKA_TOPIC) {
   throw new Error("KAFKA_TOPIC environment variable is not set.");
 }
-
+if (!process.env.KAFKA_GROUP_ID) {
+  throw new Error("KAFKA_GROUP_ID environment variable is not set.");
+}
 
 
 // Connection for Kafka producer
@@ -88,7 +92,13 @@ function checkTopicAndStartConsumer() {
 
 // Function to start Kafka consumer
 function startConsumer() {
-  const consumer = new Consumer(kafkaClient, [{ topic: process.env.KAFKA_TOPIC, partition: 0 }], { autoCommit: true });
+  const Consumerproperty = {
+    kafkaHost: process.env.KAFKA_BOOTSTRAP_SERVERS,
+    groupId: process.env.KAFKA_GROUP_ID, // Use the environment variable for groupId
+    autoCommit: true,
+    fromOffset: 'latest'
+  };
+  const consumer = new Consumer(Consumerproperty, [{ topic: process.env.KAFKA_TOPIC, partition: 0 }], { autoCommit: true });
 
   consumer.on('message', async (message) => {
     try {
